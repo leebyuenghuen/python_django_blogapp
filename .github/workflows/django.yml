@@ -48,4 +48,4 @@ jobs:
           IMAGE_TAG: django_lastest
         run: |
           docker build -t 940168446867.dkr.ecr.eu-central-1.amazonaws.com/project:django_lastest .
-          docker push 940168446867.dkr.ecr.ca-central-1.amazonaws.com/project:django_lastest
+          docker push 940168446867.dkr.ecr.eu-central-1.amazonaws.com/project:django_lastest
