@@ -1,7 +1,7 @@
 FROM python:3.8-buster
 WORKDIR /app/django
 
-RUN pip install --upgrade pip
+RUN pip install --upgrade pip >/dev/null 2>&1
 
 RUN adduser -D myuser
 USER myuser
