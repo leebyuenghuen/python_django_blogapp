@@ -1,9 +1,17 @@
 FROM python:3.8-buster
 WORKDIR /app/django
 
-RUN python -m pip install --upgrade pip
-COPY requirements.txt ./
-RUN pip install -r requirements.txt
-COPY . .
+RUN pip install --upgrade pip
 
-CMD ["gunicorn","one2three.wsgi:application","--bind","0.0.0.0"]
+RUN adduser -D myuser
+USER myuser
+WORKDIR /home/myuser
+
+
+COPY --chown=myuser:myuser requirements.txt requirements.txt
+RUN pip install --user -r requirements.txt
+ENV PATH="/home/myuser/.local/bin:${PATH}"
+
+COPY --chown=myuser:myuser . .
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
