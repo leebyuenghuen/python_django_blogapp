@@ -55,4 +55,4 @@ jobs:
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
-          args: rollout restart back-end/deployment/was
+          args: rollout restart deployment/was.django-svc.back-end.svc.cluster.local
